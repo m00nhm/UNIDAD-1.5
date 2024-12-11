@@ -1,0 +1,32 @@
+from chemlib import Reaction
+
+def stoichiometry(reactants, products, given_amount, given_compound, target_compound):
+    """
+    Performs stoichiometric calculations to determine the amount of a product or reactant.
+
+    Args:
+        reactants (dict): Reactants with their stoichiometric coefficients (e.g., {"H2": 1, "O2": 0.5}).
+        products (dict): Products with their stoichiometric coefficients (e.g., {"H2O": 1}).
+        given_amount (float): Amount (in moles) of the given compound.
+        given_compound (str): The compound for which the given amount is provided.
+        target_compound (str): The compound to calculate the amount for.
+
+    Returns:
+        float: The amount (in moles) of the target compound.
+    """
+    reaction = Reaction(reactants, products)
+    result = reaction.stoichiometry(given_compound, given_amount, target_compound)
+    return result[target_compound]
+
+# Example usage
+if __name__ == "__main__":
+    # Example reaction: 2 H2 + O2 -> 2 H2O
+    reactants = {"H2": 2, "O2": 1}
+    products = {"H2O": 2}
+
+    given_amount = 5  # moles of H2
+    given_compound = "H2"
+    target_compound = "H2O"
+
+    target_amount = stoichiometry(reactants, products, given_amount, given_compound, target_compound)
+    print(f"From {given_amount} moles of {given_compound}, you can produce {target_amount} moles of {target_compound}.")
