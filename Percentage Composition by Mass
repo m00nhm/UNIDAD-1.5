@@ -1,0 +1,22 @@
+from chemlib import Compound
+
+def calculate_percentage_composition(formula):
+    """
+    Calculates the percentage composition by mass of each element in a chemical compound.
+
+    Args:
+        formula (str): Chemical formula of the compound (e.g., "H2SO4", "NH3").
+
+    Returns:
+        dict: A dictionary where the keys are element symbols and values are their mass percentages.
+    """
+    compound = Compound(formula)
+    return compound.mass_percent()
+
+# Example usage
+if __name__ == "__main__":
+    formula = "H2SO4"  # Example compound (Sulfuric Acid)
+    composition = calculate_percentage_composition(formula)
+    print(f"Percentage Composition of {formula}:")
+    for element, percentage in composition.items():
+        print(f"  {element}: {percentage:.2f}%")
