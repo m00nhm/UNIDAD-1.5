@@ -1,0 +1,25 @@
+from chemlib import Reaction
+
+def create_reaction(reactants, products):
+    """
+    Creates a chemical reaction object with given reactants and products.
+
+    Args:
+        reactants (dict): Dictionary of reactants with their stoichiometric coefficients (e.g., {"H2": 2, "O2": 1}).
+        products (dict): Dictionary of products with their stoichiometric coefficients (e.g., {"H2O": 2}).
+
+    Returns:
+        Reaction: A Reaction object representing the chemical reaction.
+    """
+    return Reaction(reactants, products)
+
+# Example usage
+if __name__ == "__main__":
+    # Example reaction: 2 H2 + O2 -> 2 H2O
+    reactants = {"H2": 2, "O2": 1}
+    products = {"H2O": 2}
+
+    reaction = create_reaction(reactants, products)
+    print("Reaction Details:")
+    print(f"Reactants: {reaction.reactants}")
+    print(f"Products: {reaction.products}")
