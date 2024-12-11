@@ -1,0 +1,32 @@
+from chemlib import Reaction
+
+def balance_chemical_equation(reactants, products):
+    """
+    Balances a chemical equation based on the given reactants and products.
+
+    Args:
+        reactants (list): List of reactant formulas (e.g., ["H2", "O2"]).
+        products (list): List of product formulas (e.g., ["H2O"]).
+
+    Returns:
+        dict: A dictionary with balanced reactants and products, including their coefficients.
+    """
+    reaction = Reaction.from_string(" + ".join(reactants) + " -> " + " + ".join(products))
+    return {
+        "balanced_reactants": reaction.reactants,
+        "balanced_products": reaction.products
+    }
+
+# Example usage
+if __name__ == "__main__":
+    reactants = ["H2", "O2"]  # Example unbalanced reaction
+    products = ["H2O"]
+
+    balanced_equation = balance_chemical_equation(reactants, products)
+    print("Balanced Equation:")
+    print("Reactants:")
+    for compound, coefficient in balanced_equation["balanced_reactants"].items():
+        print(f"  {compound}: {coefficient}")
+    print("Products:")
+    for compound, coefficient in balanced_equation["balanced_products"].items():
+        print(f"  {compound}: {coefficient}")
