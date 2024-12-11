@@ -1,0 +1,30 @@
+from chemlib import Compound
+
+def create_compound(formula):
+    """
+    Creates a compound object based on the given chemical formula.
+
+    Args:
+        formula (str): Chemical formula of the compound (e.g., "H2O", "CO2").
+
+    Returns:
+        dict: Information about the compound, including its molar mass and elemental composition.
+    """
+    compound = Compound(formula)
+    return {
+        "formula": compound.formula,
+        "molar_mass": compound.molar_mass(),
+        "composition": compound.mass_percent()
+    }
+
+# Example usage
+if __name__ == "__main__":
+    formula = "H2O"  # Example compound
+    compound_info = create_compound(formula)
+    print("Compound Information:")
+    print(f"Formula: {compound_info['formula']}")
+    print(f"Molar Mass: {compound_info['molar_mass']} g/mol")
+    print("Elemental Composition:")
+    for element, percentage in compound_info['composition'].items():
+        print(f"  {element}: {percentage:.2f}%")
+
